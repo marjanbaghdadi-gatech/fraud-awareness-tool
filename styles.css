@@ -1,0 +1,93 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  margin: 0;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.hero {
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  font-size: 36px;
+}
+
+.hero span {
+  color: #6c5ce7;
+}
+
+.inputs {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  margin: 10px 0;
+}
+
+button {
+  background: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.results {
+  margin: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.result-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.result-card {
+  flex: 1;
+  padding: 15px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.score {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.risk-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.explanation {
+  margin-top: 20px;
+}
