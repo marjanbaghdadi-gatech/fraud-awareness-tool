@@ -38,6 +38,10 @@ imageInput.addEventListener("change", () => {
   fileName.textContent = selectedImageFile ? selectedImageFile.name : "";
 });
 
+dropZone.addEventListener("click", () => {
+  imageInput.click();
+});
+
 ["dragenter", "dragover"].forEach((eventName) => {
   dropZone.addEventListener(eventName, (event) => {
     event.preventDefault();
@@ -159,27 +163,22 @@ function renderResults(data) {
   resultsPanel.classList.remove("hidden");
 
   riskScore.textContent = safeScore;
-  riskBadge.textContent = titleCase(level);
+  riskBadge.textContent = level === "likely risky" ? "⚠ High Risk" : titleCase(level);
   riskBadge.className = `risk-badge ${riskClass(level)}`;
 
   const rotation = -75 + safeScore * 1.5;
   gaugeNeedle.style.transform = `rotate(${rotation}deg)`;
 
-  summaryText.textContent =
-    data.summary || "The tool completed the analysis.";
+  summaryText.textContent = data.summary || "The tool completed the analysis.";
 
   renderList(redFlagsList, data.red_flags, "No major red flags were detected.");
-  renderList(
-    nextStepsList,
-    data.recommended_next_steps,
-    "When in doubt, verify through an official source."
-  );
+  renderList(nextStepsList, data.recommended_next_steps, "When in doubt, verify through an official source.");
 
   flagCount.textContent = Array.isArray(data.red_flags) ? data.red_flags.length : 0;
 
   explanationText.textContent =
     data[explanationKey] ||
-    "The tool looked at the message content, common scam warning signs, and the overall context to estimate the level of risk.";
+    "The tool looked at message patterns, common scam warning signs, and the overall context to estimate the level of risk.";
 
   plainExplanationText.textContent =
     data.plain_language_explanation ||
@@ -189,10 +188,7 @@ function renderResults(data) {
     data.disclaimer ||
     "This is an educational assessment and may not always be correct. When in doubt, verify through an official source.";
 
-  resultsPanel.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+  resultsPanel.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderList(container, items, fallback) {
@@ -202,7 +198,13 @@ function renderList(container, items, fallback) {
 
   list.forEach((item) => {
     const li = document.createElement("li");
-    li.textContent = item;
+
+    if (container.id === "nextStepsList") {
+      li.innerHTML = `<strong>${escapeHTML(item)}</strong>`;
+    } else {
+      li.textContent = item;
+    }
+
     container.appendChild(li);
   });
 }
@@ -245,10 +247,21 @@ function showError(error) {
   riskBadge.className = "risk-badge medium";
   summaryText.textContent =
     "Something went wrong while analyzing the content. Please check your webhook URL and n8n workflow response.";
+
   redFlagsList.innerHTML = "";
   nextStepsList.innerHTML = "";
+  flagCount.textContent = "0";
+
   explanationText.textContent = error.message;
   plainExplanationText.textContent = "";
   disclaimerText.textContent = "";
 }
 
+function escapeHTML(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
