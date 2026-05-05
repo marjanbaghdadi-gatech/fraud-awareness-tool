@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scam Awareness Assistant</title>
-  <link rel="stylesheet" href="./styles.css?v=3">
+  <link rel="stylesheet" href="./styles.css?v=4" />
 </head>
 
 <body>
@@ -17,8 +17,8 @@
 
       <div class="top-actions">
         <span class="protect-note">🛡 Stay informed. Stay protected.</span>
-        <button class="learn-btn">Learn more</button>
-        <button class="theme-btn">☾</button>
+        <button class="learn-btn" type="button">Learn more</button>
+        <button class="theme-btn" type="button">☾</button>
       </div>
     </header>
 
@@ -34,7 +34,10 @@
 
         <div class="hero-copy">
           <h1>Spot scams.<br><span>Protect</span> what matters.</h1>
-          <p>Paste a suspicious message or upload a screenshot.<br>We’ll analyze it and help you stay one step ahead.</p>
+          <p>
+            Paste a suspicious message or upload a screenshot.<br>
+            We’ll analyze it and help you stay one step ahead.
+          </p>
         </div>
 
         <div class="privacy-card">
@@ -63,7 +66,9 @@
 
           <div class="input-footer">
             <span>🔒 We don’t store or share your message.</span>
-            <button id="analyzeTextBtn" class="primary-btn">✦ Analyze message</button>
+            <button id="analyzeTextBtn" class="primary-btn" type="button">
+              ✦ Analyze message
+            </button>
           </div>
         </article>
 
@@ -76,7 +81,7 @@
             </div>
           </div>
 
-          <label id="dropZone" class="drop-zone">
+          <label id="dropZone" class="drop-zone" for="imageInput">
             <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" />
             <div class="upload-icon">⇧</div>
             <strong>Drag and drop an image here</strong>
@@ -87,12 +92,14 @@
 
           <div class="input-footer">
             <span>🔒 We don’t store or share your image.</span>
-            <button id="analyzeImageBtn" class="primary-btn blue-btn">✦ Analyze image</button>
+            <button id="analyzeImageBtn" class="primary-btn blue-btn" type="button">
+              ✦ Analyze image
+            </button>
           </div>
         </article>
       </section>
 
-      <section id="resultsPanel" class="results-frame">
+      <section id="resultsPanel" class="results-frame hidden">
         <div class="results-title">
           <div class="result-shield">🛡️</div>
           <div>
@@ -107,18 +114,21 @@
 
             <div class="score-content">
               <div>
-                <div class="score-number"><span id="riskScore">87</span><small>/100</small></div>
-                <div id="riskBadge" class="risk-badge">⚠ High Risk</div>
+                <div class="score-number">
+                  <span id="riskScore">--</span><small>/100</small>
+                </div>
+                <div id="riskBadge" class="risk-badge">Waiting</div>
               </div>
 
               <div class="gauge-area">
-                <svg viewBox="0 0 220 130" class="risk-gauge-svg">
+                <svg viewBox="0 0 220 130" class="risk-gauge-svg" aria-hidden="true">
                   <path class="gauge-low" d="M35 110 A75 75 0 0 1 75 45" />
                   <path class="gauge-mid" d="M75 45 A75 75 0 0 1 145 45" />
                   <path class="gauge-high" d="M145 45 A75 75 0 0 1 185 110" />
                   <line id="gaugeNeedle" x1="110" y1="110" x2="170" y2="78" />
                   <circle cx="110" cy="110" r="7" />
                 </svg>
+
                 <div class="gauge-labels">
                   <span>Low Risk</span>
                   <span>High Risk</span>
@@ -128,36 +138,26 @@
 
             <div class="summary-box">
               <span>🛡️</span>
-              <p id="summaryText">This content shows strong indicators of a potential scam. Exercise caution and do not share personal or financial information.</p>
+              <p id="summaryText">Submit a suspicious message or screenshot to begin.</p>
             </div>
           </article>
 
           <article class="result-card">
             <div class="card-row-title">
               <h3>🚩 Top Red Flags</h3>
-              <span id="flagCount">5</span>
+              <span id="flagCount">0</span>
             </div>
 
-            <ul id="redFlagsList" class="flag-list">
-              <li>Urgent or threatening language</li>
-              <li>Request for personal information</li>
-              <li>Suspicious link or call to action</li>
-              <li>Impersonation of trusted entity</li>
-              <li>Too good to be true offer</li>
-            </ul>
+            <ul id="redFlagsList" class="flag-list"></ul>
 
-            <button id="viewFullBtn" class="outline-btn">View full analysis⌄</button>
+            <button id="viewFullBtn" class="outline-btn" type="button">
+              View full analysis⌄
+            </button>
           </article>
 
           <article class="result-card">
             <h3>🛡️ Recommended Next Steps</h3>
-
-            <ul id="nextStepsList" class="steps-list">
-              <li><strong>Do not click on links or attachments</strong><br><span>Avoid interacting with the content.</span></li>
-              <li><strong>Do not share personal information</strong><br><span>Protect your data and your accounts.</span></li>
-              <li><strong>Report it to the appropriate channel</strong><br><span>Help others by reporting this scam.</span></li>
-              <li><strong>When in doubt, verify independently</strong><br><span>Contact the organization directly.</span></li>
-            </ul>
+            <ul id="nextStepsList" class="steps-list"></ul>
           </article>
         </div>
 
@@ -176,13 +176,12 @@
             <strong>Stay safe. Stay smart.</strong>
             <p>Scammers change tactics. Awareness keeps you protected.</p>
           </div>
-          <button>Learn how to stay safe ↗</button>
+          <button type="button">Learn how to stay safe ↗</button>
         </div>
       </section>
     </main>
   </div>
 
-<script src="./script.js?v=3"></script>
-  
+  <script src="./script.js?v=4"></script>
 </body>
 </html>
