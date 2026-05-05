@@ -274,12 +274,12 @@ body {
 }
 
 .input-icon {
-  width: 54px;
-  height: 54px;
+  width: 60px;
+  height: 60px;
   display: grid;
   place-items: center;
   border-radius: 13px;
-  font-size: 25px;
+  font-size: 28px;
   flex: 0 0 auto;
 }
 
@@ -292,15 +292,15 @@ body {
 }
 
 .input-head h2 {
-  margin: 4px 0 6px;
-  font-size: 20px;
+  font-size: 28px;
+  font-weight: 900;
   letter-spacing: -0.02em;
 }
 
 .input-head p {
   margin: 0;
-  color: var(--muted);
-  font-weight: 520;
+  font-size: 16px;
+  color: #6b7280;
 }
 
 .textarea-box {
