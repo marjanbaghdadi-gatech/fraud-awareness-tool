@@ -1,5 +1,4 @@
 const WEBHOOK_URL = "https://mbaghdadi6g.app.n8n.cloud/webhook/fraud-check";
-const WEBHOOK_URL = "https://YOUR-N8N-DOMAIN/webhook/fraud-check";
 
 const textInput = document.getElementById("textInput");
 const charCount = document.getElementById("charCount");
