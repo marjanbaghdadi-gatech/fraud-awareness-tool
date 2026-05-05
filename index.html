@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scam Awareness Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">🛡 Scam Awareness Assistant</div>
+  <div class="top-actions">Stay informed. Stay protected.</div>
+</header>
+
+<section class="hero">
+  <h1>Spot scams.<br><span>Protect what matters.</span></h1>
+  <p>Paste a suspicious message or upload a screenshot.</p>
+</section>
+
+<section class="inputs">
+  <!-- TEXT -->
+  <div class="card">
+    <h3>Paste a text message</h3>
+    <textarea id="textInput" placeholder="Paste message here..."></textarea>
+    <button id="analyzeText">Analyze message</button>
+  </div>
+
+  <!-- IMAGE -->
+  <div class="card">
+    <h3>Upload a screenshot</h3>
+    <input type="file" id="imageInput" />
+    <button id="analyzeImage">Analyze image</button>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="results hidden">
+  <h2>Analysis Result</h2>
+
+  <div class="result-grid">
+    <!-- SCORE -->
+    <div class="result-card">
+      <h4>Scam Risk Score</h4>
+      <div id="score" class="score">--</div>
+      <div id="riskLabel" class="risk-label"></div>
+    </div>
+
+    <!-- FLAGS -->
+    <div class="result-card">
+      <h4>Top Red Flags</h4>
+      <ul id="flags"></ul>
+    </div>
+
+    <!-- STEPS -->
+    <div class="result-card">
+      <h4>Recommended Next Steps</h4>
+      <ul id="steps"></ul>
+    </div>
+  </div>
+
+  <div class="explanation">
+    <h4>How this tool reached its conclusion</h4>
+    <p id="explanationText"></p>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
